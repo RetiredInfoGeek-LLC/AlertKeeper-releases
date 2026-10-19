@@ -1,0 +1,66 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Review · Help · AlertKeeper</title>
+  <link rel="stylesheet" href="static/tokens.css">
+  <link rel="stylesheet" href="static/app.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar__inner">
+    <a class="brand" href="index.html" aria-label="AlertKeeper: Start here">
+      <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true">
+        <rect class="brand__desk" x="3" y="9" width="24" height="18" rx="4"/>
+        <circle class="brand__dot" cx="25" cy="9" r="5"/>
+      </svg>
+      <span class="brand__name">AlertKeeper</span>
+      <span class="brand__version">0.2.12</span>
+    </a>
+  </div>
+  <nav class="nav" aria-label="Pages">
+    
+    <a class="nav__link" href="index.html">Start here</a>
+    
+    <a class="nav__link nav__link--current" href="help.html" aria-current="page">Help</a>
+    
+    <a class="nav__link" href="guides.html">Guides</a>
+    
+    <a class="nav__link" href="report.html">Send a report</a>
+    
+  </nav>
+</header>
+<main class="page stack page--text">
+
+<nav class="row settings-bar" aria-label="Help sections"><a href="help.html">← All help</a><a href="getting-started.html">Getting started</a><a href="words.html">Words AlertKeeper uses</a><a href="pages.html">The pages</a><a href="guides.html">Guides</a><a href="review.html" aria-current="page">Review</a><a href="troubleshooting.html">Troubleshooting</a><a href="numbers.html">Why my numbers differ from my broker&#39;s or another program&#39;s</a><a href="report.html">Send a report</a><a href="about.html">About</a></nav>
+<h1 class="page-title">Review</h1>
+
+<section class="card">
+  
+  
+<p>Review lists what AlertKeeper wasn't sure of. Nothing there is guessed: each item shows the rows or letter involved and says what you can do.</p>
+<figure class="help-figure"><a href="static/help/review.png" title="Open the picture full size"><img class="help-picture" src="static/help/review.png" alt="Review: a possible match with Yes, I followed this and Not this; positions set aside, each with the file row it comes from" loading="lazy"></a><figcaption class="muted">A picture of Review, with made-up data.</figcaption></figure>
+<dl class="terms">
+  <dt>Possible matches to confirm</dt><dd>A trade that looks like it followed a service's rec, but not exactly (another strike, a few days later). Say whether you followed it; until then it isn't counted for the service.</dd>
+  <dt>Positions set aside</dt><dd>A position AlertKeeper couldn't work out from your history -- often something bought before the history begins. Import more history, or a positions file, or enter a starting position.</dd>
+  <dt>Rows AlertKeeper couldn't read</dt><dd>A row of a broker file with an action word it doesn't know, or a cell that doesn't read. Kept exactly as written; it says why.</dd>
+  <dt>Differences with your broker's files</dt><dd>Where your positions file or realized gain/loss file disagrees with what AlertKeeper worked out, with both numbers side by side.</dd>
+  <dt>Manual fills your broker file doesn't show</dt><dd>A trade you entered manually, still unmatched after a later broker file: check it, or delete it.</dd>
+  <dt>Mail from a sender AlertKeeper doesn't know</dt><dd>Three choices: <b>put it with a service</b> -- one in the list (its letters are read as that service's), or <b>A new service…</b>, which asks for the new service's name (and its publisher, if you know it) and makes it: the sender is then known and its letters are kept under that service, though AlertKeeper can't read their recs until a pack for it comes with an update; <b>Not a letter — skip just this one</b> (this email only: the address stays unknown, and its next letter asks again); or <b>Ignore everything from this address, now and later</b> (its mail is filed quietly; Settings → Mailbox → Ignored senders lists it, with Stop ignoring to bring its letters back here). Google's own mail and your services' marketing mail never land here.</dd>
+  <dt>From an address you ignored, but it looks like a letter</dt><dd>The safety net: mail from an ignored address that a service's pack reads as a letter with recs is never filed quietly. It waits here, nothing counted, with the same choices: put it with the service, skip just this one, or keep ignoring the address.</dd>
+  <dt>Letters AlertKeeper recognised but couldn't read</dt><dd>A service's letter whose layout has changed: kept as received, nothing read from it, until its pack is updated.</dd>
+  <dt>Closes of a service's rec not scored</dt><dd>No price for the service's exit day (often an evening the computer was off). Nothing to do: it's counted with its realized P/L and never estimated.</dd>
+</dl>
+
+</section>
+
+
+</main>
+<footer class="site-foot">
+  <p><a href="index.html#statement">Information, not advice — see the full statement</a></p>
+  <p class="muted">AlertKeeper 0.2.12. Every picture here shows made-up data.</p>
+</footer>
+</body>
+</html>

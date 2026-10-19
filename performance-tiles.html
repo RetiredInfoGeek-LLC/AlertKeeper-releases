@@ -1,0 +1,75 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Performance tiles · Help · AlertKeeper</title>
+  <link rel="stylesheet" href="static/tokens.css">
+  <link rel="stylesheet" href="static/app.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar__inner">
+    <a class="brand" href="index.html" aria-label="AlertKeeper: Start here">
+      <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true">
+        <rect class="brand__desk" x="3" y="9" width="24" height="18" rx="4"/>
+        <circle class="brand__dot" cx="25" cy="9" r="5"/>
+      </svg>
+      <span class="brand__name">AlertKeeper</span>
+      <span class="brand__version">0.2.12</span>
+    </a>
+  </div>
+  <nav class="nav" aria-label="Pages">
+    
+    <a class="nav__link" href="index.html">Start here</a>
+    
+    <a class="nav__link" href="help.html">Help</a>
+    
+    <a class="nav__link nav__link--current" href="guides.html" aria-current="page">Guides</a>
+    
+    <a class="nav__link" href="report.html">Send a report</a>
+    
+  </nav>
+</header>
+<main class="page stack page--text">
+
+<nav class="row settings-bar" aria-label="Help sections"><a href="help.html">← All help</a><a href="getting-started.html">Getting started</a><a href="words.html">Words AlertKeeper uses</a><a href="pages.html">The pages</a><a href="guides.html" aria-current="page">Guides</a><a href="review.html">Review</a><a href="troubleshooting.html">Troubleshooting</a><a href="numbers.html">Why my numbers differ from my broker&#39;s or another program&#39;s</a><a href="report.html">Send a report</a><a href="about.html">About</a></nav>
+<h1 class="page-title">Performance tiles</h1>
+
+<section class="card">
+  <div class="card__head"><h2 class="card__title">Where this comes from</h2></div>
+  <div class="help-sources"><h3 class="section-title">Originator and date</h3><p>AlertKeeper&#39;s maker, 10/12/2026: Performance&#39;s top figures as a trading journal shows them -- Net P/L, Fees paid,
+Win rate, Avg hold, Profit factor, # trades, Avg P/L per trade and Max drawdown -- for the chosen account and for
+all, with gains and losses per account beside unrealized P/L on what&#39;s open.</p><h3 class="section-title">Industry sources read</h3><p>The maker&#39;s own earlier trading journal and the trade statistics behind it, read for their definitions only; its
+code and data are never used. Profit factor and maximum drawdown are standard trading-statistics measures, used
+here in their usual sense; no further source was read for them.</p><h3 class="section-title">What prompted it</h3><p>The same figures, used daily in that earlier journal, for the trades AlertKeeper keeps.</p><h3 class="section-title">What we changed and why</h3><p>One rule: P/L is the trades&#39; own -- what was received less what was paid, with the trades&#39; own commissions and fees
+taken off -- and nothing else. The account&#39;s other fees, deposits, withdrawals, interest and transfers stay in
+Trades → Every row. A lot transferred in counts at its transfer cost like any other lot (Trades → Every row shows the transfer), so
+Performance no longer says how much of a total came from transfers in. Every figure counts the trades with a close
+in the time frame; a trade counts once however many part closes it had. Each figure, in plain words:</p><p>Net P/L: what the trades closed in the time frame made or lost, after their commissions and fees. Beside it, how
+many trades that is.</p><p>Fees paid: the commissions and fees those trades paid -- the difference between their P/L before fees (gross) and
+after (net).</p><p>Win rate: the share of those trades that made money. Beside it, how many won and how many lost.</p><p>Avg hold: for trades closed for good, the average number of calendar days from the first opening to the day the
+position was back to zero; beside it, the longest.</p><p>Profit factor: the money the winning trades made divided by the money the losing trades lost. 2 means the wins
+brought in twice what the losses cost; below 1, the losses were bigger. With no losing trade there is nothing to
+divide by, so it shows &#34;—&#34;. Beside it, the average winning trade.</p><p># trades: the trades in play in the time frame -- those closed in it and those still open now.</p><p>Avg P/L per trade: Net P/L divided by the trades closed.</p><p>Max drawdown: add up net P/L day by day, starting at $0, and find the biggest fall from a high point to a later low
+point. That fall is the drawdown; the days of the high (the peak) and the low (the trough) are shown beside it.
+$0.00 means the running total never fell below a high it had reached. It measures realized P/L only, not the
+account&#39;s value.</p><p>The per-account table: Realized gains (the winning trades&#39; P/L added up), Realized losses (the losing ones&#39;), Net
+realized (both together), each with its count, which opens those trades on Trades; and Unrealized now -- the open
+positions at their latest price, as on Positions, in dollars and as a percent of what they cost. Unrealized is
+today&#39;s, whatever the time frame. Paper accounts get the same figures in their own section, never mixed in.</p><h3 class="section-title">Our own evidence</h3><p>`tests/test_performance_tiles.py` builds a made-up history with two wins, two losses and a trade still open, and
+checks every figure by hand: net $98.00 after $2.00 of fees (gross $100.00), a 50% win rate, a profit factor of
+1.65 ($248 won over $150 lost), an average win of $124.00, a drawdown of $150.00 from 9/3 to 9/10, and a time frame
+that starts mid-way (the drawdown then counted from $0 at its start). It also checks that each count opens exactly
+those trades on Trades. `tests/test_transfers_in.py` checks that a transfer in is counted at its cost without a
+note.</p></div>
+</section>
+
+</main>
+<footer class="site-foot">
+  <p><a href="index.html#statement">Information, not advice — see the full statement</a></p>
+  <p class="muted">AlertKeeper 0.2.12. Every picture here shows made-up data.</p>
+</footer>
+</body>
+</html>

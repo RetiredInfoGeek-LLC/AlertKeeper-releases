@@ -1,0 +1,78 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Words AlertKeeper uses · Help · AlertKeeper</title>
+  <link rel="stylesheet" href="static/tokens.css">
+  <link rel="stylesheet" href="static/app.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar__inner">
+    <a class="brand" href="index.html" aria-label="AlertKeeper: Start here">
+      <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true">
+        <rect class="brand__desk" x="3" y="9" width="24" height="18" rx="4"/>
+        <circle class="brand__dot" cx="25" cy="9" r="5"/>
+      </svg>
+      <span class="brand__name">AlertKeeper</span>
+      <span class="brand__version">0.2.12</span>
+    </a>
+  </div>
+  <nav class="nav" aria-label="Pages">
+    
+    <a class="nav__link" href="index.html">Start here</a>
+    
+    <a class="nav__link nav__link--current" href="help.html" aria-current="page">Help</a>
+    
+    <a class="nav__link" href="guides.html">Guides</a>
+    
+    <a class="nav__link" href="report.html">Send a report</a>
+    
+  </nav>
+</header>
+<main class="page stack page--text">
+
+<nav class="row settings-bar" aria-label="Help sections"><a href="help.html">← All help</a><a href="getting-started.html">Getting started</a><a href="words.html" aria-current="page">Words AlertKeeper uses</a><a href="pages.html">The pages</a><a href="guides.html">Guides</a><a href="review.html">Review</a><a href="troubleshooting.html">Troubleshooting</a><a href="numbers.html">Why my numbers differ from my broker&#39;s or another program&#39;s</a><a href="report.html">Send a report</a><a href="about.html">About</a></nav>
+<h1 class="page-title">Words AlertKeeper uses</h1>
+
+<section class="card">
+  
+  
+<dl class="terms">
+  <dt>Service</dt><dd>A newsletter or alert service whose letters AlertKeeper reads: one you pay for, or a free one.</dd>
+  <dt>Rec</dt><dd>A service's recommendation: to buy (or sell) a stock or an option, and later its close -- "sell", "close half". A rec stays <b>in force</b> until the service closes it.</dd>
+  <dt>Information-only</dt><dd>Lines from a service that doesn't recommend trades to you -- a fund's own trades (ARK), a free letter's picks or ranks (Zacks). Shown grey on Alerts, never matched to your trades, never scored.</dd>
+  <dt>Exact and possible match</dt><dd>Exact: your trade is in the very stock or option contract a rec names. Possible: the same underlying stock, but another strike, expiry, or shares instead of an option (or the other way). A possible match counts for the service only once you confirm it under Review.</dd>
+  <dt>Position</dt><dd>What you hold now in one stock or one option contract, in one account.</dd>
+  <dt>Trade</dt><dd>One position from its first buy (or sell, for a short) until it's back to zero. Buying again later starts a new trade.</dd>
+  <dt>Lot</dt><dd>Each purchase (or sale, for a short) inside a trade. When you sell part, the oldest lot goes first.</dd>
+  <dt>Realized P/L</dt><dd>Money made or lost on what you've closed: what you received less what you paid, fees included. Options count 100 shares each.</dd>
+  <dt>Starting position</dt><dd>Something you held before your imported history begins. Its cost comes from your positions file or from you, and it's always labelled.</dd>
+  <dt>Manual</dt><dd>A trade you entered yourself (Trades → Enter a trade manually) because your broker's files don't show it yet. It counts like any fill, marked Manual in amber, until an imported file carries the same fill: then the file's rows replace it and the mark goes.</dd>
+  <dt>Paper account</dt><dd>Practice money: trades you type in (or start from a rec), with no broker and no number. Its results are always shown apart from your real accounts'.</dd>
+  <dt>Transferred in</dt><dd>Shares or options moved into the account from another. Their cost comes from your broker's lot details or positions file, and they're labelled too.</dd>
+  <dt>Review</dt><dd>Anything AlertKeeper wasn't sure of. It's listed with the rows involved instead of being guessed.</dd>
+  <dt>Mark</dt><dd>An option's price saved one evening after the market closed: the middle of the bid and ask, or the last trade. A day without one says "no price — not scored", never a guess.</dd>
+  <dt>DTE</dt><dd>Days to expiry: on Positions, the calendar days to an option contract's last trading day -- its expiry, or the trading day before it when the expiry is a market holiday. "today" on that day; under 7 days it shows amber. Positions are listed by it, soonest first, shares last.</dd>
+  <dt>Unrealized P/L</dt><dd>What an open position would bring at its latest price, less what it cost. Nothing is sold, so it isn't counted as made or lost. On Positions: Value less Cost, in dollars and as a percent of the cost paid ("+$482.00 (+6.2%)").</dd>
+  <dt>Day</dt><dd>On Positions, how much a position's value changed since the previous saved price, for the latest market session, in dollars and as a percent of the cost paid. Until that session's close (shares) or evening mark (options) is saved it shows —, never an older day's change.</dd>
+  <dt>Settled and working closes</dt><dd>On Exit Scorecard a close is settled once its reference is known: the service's exit, or the contract's last day once it has passed. Until then it's working, with a reading so far. Its realized P/L is final at the close either way.</dd>
+  <dt>Ahead, Behind, Followed, Late</dt><dd>Your close against the service's exit: well before it and better or worse, on it (its day, the day before, or just after), or after it.</dd>
+  <dt>Right call, Early</dt><dd>A close of your own, against the contract's last day: right when holding on would have left you no better off, early when it would have done better. Near flat closes aren't judged.</dd>
+  <dt>Colours</dt><dd>On every page: green, all fine; grey, something to know, nothing to do; amber, needs you -- something is owed, and the card says what to do; red, needs you now. The dot in the menu bar (on a Mac) or the tray (on Windows) shows the worst colour (grey leaves it green).</dd>
+  <dt>Pack</dt><dd>The part of AlertKeeper that knows one service's letters, or one broker's files, or the market's calendar. Packs come with AlertKeeper and are updated with it; each is checked against a signed fingerprint before it's used.</dd>
+</dl>
+<p class="muted">ARK Invest and Zacks are examples of letters AlertKeeper can read, not services we suggest or endorse. AlertKeeper recommends no service.</p>
+
+</section>
+
+
+</main>
+<footer class="site-foot">
+  <p><a href="index.html#statement">Information, not advice — see the full statement</a></p>
+  <p class="muted">AlertKeeper 0.2.12. Every picture here shows made-up data.</p>
+</footer>
+</body>
+</html>

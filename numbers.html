@@ -1,0 +1,72 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Why my numbers differ from my broker&#39;s or another program&#39;s · Help · AlertKeeper</title>
+  <link rel="stylesheet" href="static/tokens.css">
+  <link rel="stylesheet" href="static/app.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar__inner">
+    <a class="brand" href="index.html" aria-label="AlertKeeper: Start here">
+      <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true">
+        <rect class="brand__desk" x="3" y="9" width="24" height="18" rx="4"/>
+        <circle class="brand__dot" cx="25" cy="9" r="5"/>
+      </svg>
+      <span class="brand__name">AlertKeeper</span>
+      <span class="brand__version">0.2.12</span>
+    </a>
+  </div>
+  <nav class="nav" aria-label="Pages">
+    
+    <a class="nav__link" href="index.html">Start here</a>
+    
+    <a class="nav__link nav__link--current" href="help.html" aria-current="page">Help</a>
+    
+    <a class="nav__link" href="guides.html">Guides</a>
+    
+    <a class="nav__link" href="report.html">Send a report</a>
+    
+  </nav>
+</header>
+<main class="page stack page--text">
+
+<nav class="row settings-bar" aria-label="Help sections"><a href="help.html">← All help</a><a href="getting-started.html">Getting started</a><a href="words.html">Words AlertKeeper uses</a><a href="pages.html">The pages</a><a href="guides.html">Guides</a><a href="review.html">Review</a><a href="troubleshooting.html">Troubleshooting</a><a href="numbers.html" aria-current="page">Why my numbers differ from my broker&#39;s or another program&#39;s</a><a href="report.html">Send a report</a><a href="about.html">About</a></nav>
+<h1 class="page-title">Why my numbers differ from my broker&#39;s or another program&#39;s</h1>
+
+
+<section class="card">
+  
+  
+<dl class="terms">
+  <dt>Which lot a sale closes</dt><dd>When you sell part of a position bought in several lots, the gain depends on which lot the sale closes. AlertKeeper uses your broker's own lot assignment, from the gain/loss file you import (Schwab: Accounts → Cost Basis → Realized Gain/Loss, lot details): if Schwab says a sale closed the lot bought on 9/2, AlertKeeper closes that lot. Without that file, or for a sale it doesn't cover, the oldest lot goes first (first in, first out). A program that always closes the oldest lot first can differ from your broker by a few dollars on sales that close part of a position; a position closed in full comes to the same total either way.</dd>
+  <dt>Fees</dt><dd>AlertKeeper's P/L is after the trade's own commissions and fees, as your broker's Amount column has them. A program that shows P/L before fees differs by exactly those fees: Performance's Fees paid says how much. Fees charged to the account rather than a trade, interest, deposits and withdrawals are in Trades → Every row, never in P/L.</dd>
+  <dt>Dates</dt><dd>A trade's day is the trade date in your transactions. Schwab's gain/loss file dates a sold option by the settlement day after you bought it back; AlertKeeper still matches that lot, keeps the transactions' dates, and notes it ("dated differently"). A program using settlement dates can put a close a day later -- sometimes in another month or year.</dd>
+  <dt>Positions moved between your accounts</dt><dd>They keep their original cost and buy date, from the gain/loss file. A program that starts them again at the transfer shows a different cost, and a different holding time.</dd>
+</dl>
+
+</section>
+<section class="card">
+  <div class="card__head"><h2 class="card__title">Where this comes from</h2></div>
+  <div class="help-sources"><h3 class="section-title">Originator and date</h3><p>AlertKeeper&#39;s maker, 10/13/2026, after importing a real account&#39;s files and comparing AlertKeeper&#39;s figures with the
+broker&#39;s own and with another program&#39;s.</p><h3 class="section-title">Industry sources read</h3><p>Schwab&#39;s Realized Gain/Loss lot details, as its website exports them: for each sale, the lot it closed, with the
+lot&#39;s buy date, quantity and gain or loss. First in, first out and specific-lot identification are the cost-basis
+methods brokers describe for closing lots; no further source was read for this page.</p><h3 class="section-title">What prompted it</h3><p>A program that closes lots first in, first out disagreed with the broker by a few dollars on sales that closed part
+of a position, and the broker&#39;s file dated sold options by the settlement day after they were bought back.</p><h3 class="section-title">What we changed and why</h3><p>AlertKeeper now closes the lots the broker&#39;s own gain/loss file says each sale closed; without that file, or for a
+sale it doesn&#39;t cover, the oldest lot goes first. Dates come from the transactions, and a lot the broker dates
+differently counts as a match with a note. P/L is after the trade&#39;s own commissions and fees, as before.</p><h3 class="section-title">Our own evidence</h3><p>`tests/test_import_session.py`: a sale the broker assigns to the newer lot closes that lot, where first in, first
+out would have closed the older one; a sold option bought back at once after two sales matches the broker&#39;s single
+lot dated by settlement, with its note, and stays out of Review.</p></div>
+</section>
+
+
+</main>
+<footer class="site-foot">
+  <p><a href="index.html#statement">Information, not advice — see the full statement</a></p>
+  <p class="muted">AlertKeeper 0.2.12. Every picture here shows made-up data.</p>
+</footer>
+</body>
+</html>

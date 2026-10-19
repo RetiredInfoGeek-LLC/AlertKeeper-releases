@@ -1,0 +1,182 @@
+/* Generated from tokens.yaml -- do not edit. */
+@font-face {
+  font-family: "AlertKeeper Sans";
+  src: url("fonts/InterVariable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-display: swap;
+}
+:root {
+  color-scheme: light;
+  --text-xs: 12px;
+  --text-sm: 13px;
+  --text-md: 15px;
+  --text-lg: 18px;
+  --text-xl: 22px;
+  --text-2xl: 28px;
+  --weight-body: 400;
+  --weight-medium: 500;
+  --weight-strong: 650;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-pill: 999px;
+  --size-border: 1px;
+  --size-edge: 4px;
+  --size-focus: 2px;
+  --size-mark: 28px;
+  --size-control: 40px;
+  --size-card-min: 320px;
+  --size-aside: 200px;
+  --size-page: 1440px;
+  --size-label: 160px;
+  --size-chart: 720px;
+  --size-pop: 320px;
+  --size-pop-height: 280px;
+  --size-text-page: 760px;
+  --size-clip: 260px;
+  --size-input-xs: 7ch;
+  --size-input-sm: 12ch;
+  --size-input-md: 22ch;
+  --size-input-lg: 36ch;
+  --size-sheet: 45vh;
+  --size-letter: 70vh;
+  --density-cell-y: 3px;
+  --density-cell-x: 10px;
+  --density-control: 30px;
+  --density-card: 12px;
+  --density-gap: 12px;
+  --density-page-x: 16px;
+  --density-field-gap: 8px;
+  --density-table-text: 13px;
+  --density-fit-x: 10px;
+  --density-clip-fit: 190px;
+  --density-clip-watch: 150px;
+  --leading: 1.5;
+  --font-sans: "AlertKeeper Sans", -apple-system, "Segoe UI", system-ui, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --color-bg: #eef1f4;
+  --color-surface: #ffffff;
+  --color-surface-2: #e3e7ec;
+  --color-border: #c9cfd6;
+  --color-control-border: #6f7884;
+  --color-text: #1a1d22;
+  --color-text-dim: #3d434c;
+  --color-text-mute: #4f5664;
+  --color-accent: #4338ca;
+  --color-on-accent: #ffffff;
+  --color-focus: #4338ca;
+  --color-ok: #04692b;
+  --color-ok-bg: #e2f2e7;
+  --color-info: #4f5664;
+  --color-info-bg: #e3e7ec;
+  --color-note: #8a4b0f;
+  --color-note-bg: #fbefd9;
+  --color-action: #b0201a;
+  --color-action-bg: #fbe4e2;
+  --color-gain: #04692b;
+  --color-loss: #b01d08;
+  --color-chart-gain: #04692b;
+  --color-chart-loss: #b01d08;
+  --color-chart-line: #4338ca;
+  --color-chart-grid: #dde2e8;
+  --color-shadow: #9aa3ae;
+  --color-letter-paper: #ffffff;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+  color-scheme: dark;
+  --color-bg: #14171c;
+  --color-surface: #1c2027;
+  --color-surface-2: #242931;
+  --color-border: #323944;
+  --color-control-border: #7f8996;
+  --color-text: #e3e8ef;
+  --color-text-dim: #aab3c0;
+  --color-text-mute: #949daa;
+  --color-accent: #a5b4fc;
+  --color-on-accent: #14171c;
+  --color-focus: #a5b4fc;
+  --color-ok: #5fcf80;
+  --color-ok-bg: #1d3324;
+  --color-info: #aab3c0;
+  --color-info-bg: #2a2f37;
+  --color-note: #f1b24a;
+  --color-note-bg: #3a2e17;
+  --color-action: #ef8f8f;
+  --color-action-bg: #3c1f24;
+  --color-gain: #5fcf80;
+  --color-loss: #ef8f8f;
+  --color-chart-gain: #3aab76;
+  --color-chart-loss: #df4f45;
+  --color-chart-line: #a5b4fc;
+  --color-chart-grid: #2a3039;
+  --color-shadow: #000000;
+  --color-letter-paper: #ffffff;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --color-bg: #14171c;
+  --color-surface: #1c2027;
+  --color-surface-2: #242931;
+  --color-border: #323944;
+  --color-control-border: #7f8996;
+  --color-text: #e3e8ef;
+  --color-text-dim: #aab3c0;
+  --color-text-mute: #949daa;
+  --color-accent: #a5b4fc;
+  --color-on-accent: #14171c;
+  --color-focus: #a5b4fc;
+  --color-ok: #5fcf80;
+  --color-ok-bg: #1d3324;
+  --color-info: #aab3c0;
+  --color-info-bg: #2a2f37;
+  --color-note: #f1b24a;
+  --color-note-bg: #3a2e17;
+  --color-action: #ef8f8f;
+  --color-action-bg: #3c1f24;
+  --color-gain: #5fcf80;
+  --color-loss: #ef8f8f;
+  --color-chart-gain: #3aab76;
+  --color-chart-loss: #df4f45;
+  --color-chart-line: #a5b4fc;
+  --color-chart-grid: #2a3039;
+  --color-shadow: #000000;
+  --color-letter-paper: #ffffff;
+}
+:root[data-text-size="small"] {
+  --text-xs: 11px;
+  --text-sm: 12px;
+  --text-md: 14px;
+  --text-lg: 16px;
+  --text-xl: 20px;
+  --text-2xl: 25px;
+}
+:root[data-text-size="large"] {
+  --text-xs: 14px;
+  --text-sm: 15px;
+  --text-md: 17px;
+  --text-lg: 20px;
+  --text-xl: 25px;
+  --text-2xl: 32px;
+}
+:root[data-density="roomy"] {
+  --density-cell-y: 8px;
+  --density-cell-x: 14px;
+  --density-control: 40px;
+  --density-card: 16px;
+  --density-gap: 16px;
+  --density-page-x: 24px;
+  --density-field-gap: 12px;
+  --density-table-text: 15px;
+  --density-fit-x: 10px;
+  --density-clip-fit: 120px;
+  --density-clip-watch: 90px;
+}

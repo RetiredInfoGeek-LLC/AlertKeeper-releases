@@ -1,0 +1,62 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Option chain · Help · AlertKeeper</title>
+  <link rel="stylesheet" href="static/tokens.css">
+  <link rel="stylesheet" href="static/app.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar__inner">
+    <a class="brand" href="index.html" aria-label="AlertKeeper: Start here">
+      <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true">
+        <rect class="brand__desk" x="3" y="9" width="24" height="18" rx="4"/>
+        <circle class="brand__dot" cx="25" cy="9" r="5"/>
+      </svg>
+      <span class="brand__name">AlertKeeper</span>
+      <span class="brand__version">0.2.12</span>
+    </a>
+  </div>
+  <nav class="nav" aria-label="Pages">
+    
+    <a class="nav__link" href="index.html">Start here</a>
+    
+    <a class="nav__link" href="help.html">Help</a>
+    
+    <a class="nav__link nav__link--current" href="guides.html" aria-current="page">Guides</a>
+    
+    <a class="nav__link" href="report.html">Send a report</a>
+    
+  </nav>
+</header>
+<main class="page stack page--text">
+
+<nav class="row settings-bar" aria-label="Help sections"><a href="help.html">← All help</a><a href="getting-started.html">Getting started</a><a href="words.html">Words AlertKeeper uses</a><a href="pages.html">The pages</a><a href="guides.html" aria-current="page">Guides</a><a href="review.html">Review</a><a href="troubleshooting.html">Troubleshooting</a><a href="numbers.html">Why my numbers differ from my broker&#39;s or another program&#39;s</a><a href="report.html">Send a report</a><a href="about.html">About</a></nav>
+<h1 class="page-title">Option chain</h1>
+
+<section class="card">
+  <div class="card__head"><h2 class="card__title">Where this comes from</h2></div>
+  <div class="help-sources"><h3 class="section-title">Originator and date</h3><p>AlertKeeper&#39;s maker, 10/11/2026: each ticker page shows the option chain, from the Yahoo chain data AlertKeeper
+already reads for the evening marks, with a way to put a contract straight into Add a trade.</p><h3 class="section-title">Industry sources read</h3><p>Yahoo Finance&#39;s option chains (finance.yahoo.com), read through the open-source yfinance library
+(github.com/ranaroussi/yfinance), the same way AlertKeeper reads its evening marks. Yahoo&#39;s quotes are delayed
+(about 15 minutes); its terms allow personal use: legal.yahoo.com/us/en/yahoo/terms/otos/index.html. No account is
+needed to see chains. OptionStrat (optionstrat.com) and Webull (webull.com) show more -- Greeks, implied volatility,
+strategy builders -- if wanted.</p><h3 class="section-title">What prompted it</h3><p>Trading from a service&#39;s recs: seeing the contracts a service names, and nearby strikes, beside your own positions
+without leaving AlertKeeper.</p><h3 class="section-title">What we changed and why</h3><p>Nothing in Yahoo&#39;s numbers. AlertKeeper shows one expiry at a time, nearest first; the strikes nearest the last price
+(all on request); calls left, puts right; the mid worked out as halfway between bid and ask (none when either is
+zero), the same rule as the marks. Fetched only when the user opens it and kept for the session -- never in a job --
+so the page stays within its one-second budget. Information, not advice.</p><h3 class="section-title">Our own evidence</h3><p>The tests replay a recorded chain through the same Yahoo layer (`tests/test_option_chain.py`): centring, both
+sides, the mid, the session cache (one fetch per expiry), &#34;Use this contract&#34; filling Add a trade, and the plain
+words when there&#39;s no source or Yahoo doesn&#39;t answer. First used live in 0.2.9.</p></div>
+</section>
+
+</main>
+<footer class="site-foot">
+  <p><a href="index.html#statement">Information, not advice — see the full statement</a></p>
+  <p class="muted">AlertKeeper 0.2.12. Every picture here shows made-up data.</p>
+</footer>
+</body>
+</html>

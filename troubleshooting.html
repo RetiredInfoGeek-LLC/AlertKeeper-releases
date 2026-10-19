@@ -1,0 +1,63 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Troubleshooting · Help · AlertKeeper</title>
+  <link rel="stylesheet" href="static/tokens.css">
+  <link rel="stylesheet" href="static/app.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar__inner">
+    <a class="brand" href="index.html" aria-label="AlertKeeper: Start here">
+      <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true">
+        <rect class="brand__desk" x="3" y="9" width="24" height="18" rx="4"/>
+        <circle class="brand__dot" cx="25" cy="9" r="5"/>
+      </svg>
+      <span class="brand__name">AlertKeeper</span>
+      <span class="brand__version">0.2.12</span>
+    </a>
+  </div>
+  <nav class="nav" aria-label="Pages">
+    
+    <a class="nav__link" href="index.html">Start here</a>
+    
+    <a class="nav__link nav__link--current" href="help.html" aria-current="page">Help</a>
+    
+    <a class="nav__link" href="guides.html">Guides</a>
+    
+    <a class="nav__link" href="report.html">Send a report</a>
+    
+  </nav>
+</header>
+<main class="page stack page--text">
+
+<nav class="row settings-bar" aria-label="Help sections"><a href="help.html">← All help</a><a href="getting-started.html">Getting started</a><a href="words.html">Words AlertKeeper uses</a><a href="pages.html">The pages</a><a href="guides.html">Guides</a><a href="review.html">Review</a><a href="troubleshooting.html" aria-current="page">Troubleshooting</a><a href="numbers.html">Why my numbers differ from my broker&#39;s or another program&#39;s</a><a href="report.html">Send a report</a><a href="about.html">About</a></nav>
+<h1 class="page-title">Troubleshooting</h1>
+
+<section class="card">
+  
+  
+<dl class="terms">
+  <dt>"This page can only be opened from AlertKeeper's own menu"</dt><dd>Each start of AlertKeeper has its own key. Open the page from the dot in the menu bar (on a Mac) or the tray (on Windows) (Open AlertKeeper), not from a saved link or another browser.</dd>
+  <dt>"Reconnect mailbox" or "Mailbox not reached"</dt><dd>Check the internet connection; AlertKeeper tries again by itself. If Google's app password was removed or changed, make a new one and connect again in Settings → Mailbox (<a href="mailbox.html">the mailbox guide</a>).</dd>
+  <dt>"An entry an earlier copy of AlertKeeper left in your Keychain (on a Mac) or Credential Manager (on Windows)"</dt><dd>Copies of AlertKeeper before 0.2.9 weren't signed with a Developer ID, so each was a different program to the computer and couldn't change an entry an earlier one made. AlertKeeper makes its own new entry; to tidy up, open Keychain Access, search for “AlertKeeper” and delete its entries (on a Mac); open Credential Manager → Windows Credentials, find AlertKeeper and remove its entries (on Windows). Since 0.2.9 every version is signed the same way, so it won't happen again.</dd>
+  <dt>"Your Keychain (on a Mac) or Credential Manager (on Windows) is locked"</dt><dd>Unlock it (log in again, or in Keychain Access: File → Unlock), then try again.</dd>
+  <dt>"no price"</dt><dd>Prices are saved each evening after the market closes, while AlertKeeper is open; a stock or option shows its last price "as of" its day. With the price source set to None nothing is fetched: Settings → Prices.</dd>
+  <dt>A broker file AlertKeeper doesn't recognise</dt><dd>It helps you match the file's columns and keeps the layout for that broker; or use <a href="guides.html#template">AlertKeeper's own template</a>.</dd>
+  <dt>Something red on Health</dt><dd>Each card says what's wrong and what to do. Health also has Copy diagnostics: a plain file you read first, never letters, trades or account details.</dd>
+  <dt>Beginning clean</dt><dd>Replacing or deleting the app keeps your data -- in ~/Library/Application Support/AlertKeeper on a Mac, in %LOCALAPPDATA%\AlertKeeper on Windows, where the uninstaller asks whether to delete it too. To begin clean, use Settings → Start over before you uninstall.</dd>
+</dl>
+
+</section>
+
+
+</main>
+<footer class="site-foot">
+  <p><a href="index.html#statement">Information, not advice — see the full statement</a></p>
+  <p class="muted">AlertKeeper 0.2.12. Every picture here shows made-up data.</p>
+</footer>
+</body>
+</html>

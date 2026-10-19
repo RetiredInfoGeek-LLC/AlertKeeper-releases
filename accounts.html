@@ -1,0 +1,70 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Accounts · AlertKeeper</title>
+  <link rel="stylesheet" href="static/tokens.css">
+  <link rel="stylesheet" href="static/app.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar__inner">
+    <a class="brand" href="index.html" aria-label="AlertKeeper: Start here">
+      <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true">
+        <rect class="brand__desk" x="3" y="9" width="24" height="18" rx="4"/>
+        <circle class="brand__dot" cx="25" cy="9" r="5"/>
+      </svg>
+      <span class="brand__name">AlertKeeper</span>
+      <span class="brand__version">0.2.12</span>
+    </a>
+  </div>
+  <nav class="nav" aria-label="Pages">
+    
+    <a class="nav__link" href="index.html">Start here</a>
+    
+    <a class="nav__link" href="help.html">Help</a>
+    
+    <a class="nav__link nav__link--current" href="guides.html" aria-current="page">Guides</a>
+    
+    <a class="nav__link" href="report.html">Send a report</a>
+    
+  </nav>
+</header>
+<main class="page stack page--text">
+
+<nav class="row settings-bar" aria-label="Help sections"><a href="help.html">← All help</a><a href="getting-started.html">Getting started</a><a href="words.html">Words AlertKeeper uses</a><a href="pages.html">The pages</a><a href="guides.html" aria-current="page">Guides</a><a href="review.html">Review</a><a href="troubleshooting.html">Troubleshooting</a><a href="numbers.html">Why my numbers differ from my broker&#39;s or another program&#39;s</a><a href="report.html">Send a report</a><a href="about.html">About</a></nav>
+<h1 class="page-title">Accounts</h1>
+<p class="lead">An account is a name you choose and the masked number your broker shows (like ...123). AlertKeeper never keeps a full account number. A paper account is practice money: no broker, no number.</p>
+
+
+<section class="card">
+  <div class="card__head"><h2 class="card__title">Steps</h2></div>
+  
+  <ol class="steps"><li>Adding: an account is made when you import its first file — on the Import page, choose "A new account", give it a name and the masked number the file shows. Or add it first in <b>Settings → Accounts → Add an account</b>: a name, the masked number and the broker.</li><li>Renaming: in <b>Settings → Accounts</b>, change the name and press <b>Rename</b>. Its files, trades and notes stay with it.</li><li>Archiving: press <b>Archive</b>. The account disappears from every page and every total — Positions, Trades, Performance, Review — but nothing is deleted. It waits under <b>Archived</b> in Settings; <b>Bring it back</b> puts it back everywhere, as it was.</li><li>Deleting: press <b>Delete…</b>. The next page lists everything that goes — its imported files, the rows read from them, its trades, its journal entries and notes, the manual fills. To go ahead, type the account's name. AlertKeeper first copies all your data into the <b>backups</b> folder inside your data folder, then deletes. To undo it, restore that backup (below).</li><li>A paper account: <b>Settings → Accounts → Add a paper account</b>, with a name and the starting cash. Add or take out practice money later on its Every row page (on Trades) (<b>Paper cash</b>). Its fills are typed in on <b>Trades → Enter a trade manually</b>, or start from a rec in Alerts with <b>Paper-trade this rec</b>: the ticker, the contract, the buy-up-to price and today's date are filled in; you check the quantity and save. A buy needs the paper cash (buying power is the cash); a close needs the position. Selling to open is cash-secured: a sold put holds its strike × 100 of paper cash until it's closed, a sold call needs the shares to cover it, and shares can't be sold short.</li><li>A service's close alert on a paper position is listed under Here's what's going on too, marked "Paper:" and never red; possible matches on paper trades are confirmed under Review.</li><li>Paper fees: $0 unless you set them under <b>Add a paper account</b> (a fee per stock fill, and per option contract). They're used when a paper fill's Fees box is left empty.</li><li>Deleting a paper account asks once, without typing its name. A backup is still taken first.</li></ol>
+  
+
+</section>
+<section class="card">
+  <div class="card__head"><h2 class="card__title">What you should see</h2></div>
+  
+  <ul class="steps"><li>Each account in Settings → Accounts, and in the account choices on Positions and Trades.</li><li>A paper account named with "paper" and a paper badge on every page. Its money is never added to your real accounts: Trades shows a paper total of its own, Performance a paper section of its own.</li><li>Open paper positions are priced like real ones; paper results on Performance are what was realized.</li></ul>
+
+</section>
+<section class="card">
+  <div class="card__head"><h2 class="card__title">If it doesn&#39;t work</h2></div>
+  
+  <ul class="steps"><li>A file refused as "for account ...123, but the account chosen is ...456": choose the matching account, or confirm if it really is that account.</li><li>"Not enough paper cash": the buy costs more than the paper account holds on that day or a later one. Deposit more on its Every row page (on Trades), or buy less.</li><li>"This closes 10 ABCD, but the paper account holds 5": a close can't be bigger than the position.</li><li>An account seems to have vanished: look under Archived in Settings → Accounts.</li><li>Deleted by mistake: Settings → Data & backups lists the backup "before deleting" the account, made just before; Restore… beside it puts everything back as it was then.</li></ul>
+
+</section>
+
+
+
+</main>
+<footer class="site-foot">
+  <p><a href="index.html#statement">Information, not advice — see the full statement</a></p>
+  <p class="muted">AlertKeeper 0.2.12. Every picture here shows made-up data.</p>
+</footer>
+</body>
+</html>

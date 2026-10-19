@@ -1,0 +1,99 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Guides · Help · AlertKeeper</title>
+  <link rel="stylesheet" href="static/tokens.css">
+  <link rel="stylesheet" href="static/app.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar__inner">
+    <a class="brand" href="index.html" aria-label="AlertKeeper: Start here">
+      <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true">
+        <rect class="brand__desk" x="3" y="9" width="24" height="18" rx="4"/>
+        <circle class="brand__dot" cx="25" cy="9" r="5"/>
+      </svg>
+      <span class="brand__name">AlertKeeper</span>
+      <span class="brand__version">0.2.12</span>
+    </a>
+  </div>
+  <nav class="nav" aria-label="Pages">
+    
+    <a class="nav__link" href="index.html">Start here</a>
+    
+    <a class="nav__link" href="help.html">Help</a>
+    
+    <a class="nav__link nav__link--current" href="guides.html" aria-current="page">Guides</a>
+    
+    <a class="nav__link" href="report.html">Send a report</a>
+    
+  </nav>
+</header>
+<main class="page stack page--text">
+
+<nav class="row settings-bar" aria-label="Help sections"><a href="help.html">← All help</a><a href="getting-started.html">Getting started</a><a href="words.html">Words AlertKeeper uses</a><a href="pages.html">The pages</a><a href="guides.html" aria-current="page">Guides</a><a href="review.html">Review</a><a href="troubleshooting.html">Troubleshooting</a><a href="numbers.html">Why my numbers differ from my broker&#39;s or another program&#39;s</a><a href="report.html">Send a report</a><a href="about.html">About</a></nav>
+<h1 class="page-title">Guides</h1>
+
+
+<section class="card">
+  <div class="card__head"><h2 class="card__title">Getting started</h2></div>
+  
+<ul class="steps"><li><a href="mailbox.html">Your AlertKeeper mailbox</a></li><li><a href="free-services.html">Free services to start with</a></li><li><a href="forwarding.html">Letters you already get elsewhere</a></li><li><a href="backups.html">Backups and restore</a></li><li><a href="prices.html">Prices</a></li><li><a href="accounts.html">Accounts</a></li><li><a href="broker.html">Connect Schwab</a></li></ul>
+
+</section>
+
+<section class="card">
+  <div class="card__head"><h2 class="card__title">Forwarding</h2></div>
+  
+<ul class="steps"><li><a href="forwarding-gmail.html">Forwarding from Gmail</a></li><li><a href="forwarding-outlook.html">Forwarding from Outlook.com</a></li><li><a href="forwarding-icloud.html">Forwarding from Apple iCloud Mail</a></li><li><a href="forwarding-yahoo.html">Forwarding from Yahoo Mail</a></li></ul>
+
+</section>
+
+<section class="card">
+  <div class="card__head"><h2 class="card__title">Broker files</h2></div>
+  
+<ul class="steps"><li><a href="schwab-files.html">Your Schwab files</a></li><li><a href="fidelity-files.html">Your Fidelity files</a></li></ul>
+
+</section>
+
+
+<section class="card">
+  <div class="card__head"><h2 class="card__title">Where the data comes from</h2></div>
+  
+<ul class="steps"><li><a href="option-chain.html">Option chain</a></li><li><a href="schwab.html">Schwab connection</a></li><li><a href="performance-tiles.html">Performance tiles</a></li><li><a href="numbers.html">Why numbers differ</a></li><li><a href="greeks.html">Greeks from Schwab</a></li><li><a href="pack-divergence.html">The Divergence pack</a></li><li><a href="pack-income-alliance.html">The Income Alliance pack</a></li><li><a href="pack-trading-desk.html">The Trading Desk pack</a></li></ul>
+
+</section>
+
+<section class="card" id="template">
+  <div class="card__head"><h2 class="card__title">If AlertKeeper doesn't know your broker</h2></div>
+  <p>Import the broker's transactions file anyway. AlertKeeper shows the first rows and guesses which column is the date, the action, the symbol, the quantity, the price, the fees, the amount and the account, and what each action word means. You check and correct the guesses; anything you're not sure of goes to Review. The answers are kept as <b>your own layout</b> for that broker (Settings → Your own file layouts): used for later files with the same columns, and never replaced by updates.</p>
+  <p>Last resort: AlertKeeper's own template. Copy your trades into it, one row per action, save it as CSV and import it.</p>
+  <div class="table-wrap"><table class="table">
+    <thead><tr><th scope="col">Date</th><th scope="col">Account</th><th scope="col">Action</th><th scope="col">Symbol</th><th scope="col" class="num">Quantity</th><th scope="col" class="num">Price</th><th scope="col" class="num">Fees</th><th scope="col" class="num">Amount</th></tr></thead>
+    <tbody>
+      <tr><td class="nowrap">2026-09-01</td><td>...123</td><td>Buy</td><td>ABCD</td><td class="num">10</td><td class="num">12.50</td><td class="num">0</td><td class="num"></td></tr>
+      <tr><td class="nowrap">2026-09-02</td><td>...123</td><td class="nowrap">Sell to Open</td><td class="nowrap">WXYZ 2026-10-16 20 P</td><td class="num">1</td><td class="num">2.00</td><td class="num">0.66</td><td class="num"></td></tr>
+      <tr><td class="nowrap">2026-09-04</td><td>...123</td><td>Dividend</td><td>ABCD</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num">1.20</td></tr>
+    </tbody>
+  </table></div>
+  <dl class="terms">
+    <dt>Date</dt><dd>The day it happened, as YYYY-MM-DD.</dd>
+    <dt>Account</dt><dd>The masked number your broker shows, like ...123. Optional.</dd>
+    <dt>Action</dt><dd>One of: Buy, Sell (shares); Buy to Open, Sell to Open, Buy to Close, Sell to Close; Expired; Assigned; Dividend, Interest, Deposit, Withdrawal, Fee.</dd>
+    <dt>Symbol</dt><dd>The ticker, or an option as ticker, expiry, strike and C or P: WXYZ 2026-10-16 20 P.</dd>
+    <dt>Quantity</dt><dd>Always positive: shares, or contracts for options.</dd>
+    <dt>Amount</dt><dd>Leave it empty on trades and AlertKeeper works it out. On money rows: money into the account positive, money out negative.</dd>
+  </dl>
+</section>
+
+
+</main>
+<footer class="site-foot">
+  <p><a href="index.html#statement">Information, not advice — see the full statement</a></p>
+  <p class="muted">AlertKeeper 0.2.12. Every picture here shows made-up data.</p>
+</footer>
+</body>
+</html>

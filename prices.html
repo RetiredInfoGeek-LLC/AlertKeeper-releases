@@ -1,0 +1,70 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Prices · AlertKeeper</title>
+  <link rel="stylesheet" href="static/tokens.css">
+  <link rel="stylesheet" href="static/app.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar__inner">
+    <a class="brand" href="index.html" aria-label="AlertKeeper: Start here">
+      <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true">
+        <rect class="brand__desk" x="3" y="9" width="24" height="18" rx="4"/>
+        <circle class="brand__dot" cx="25" cy="9" r="5"/>
+      </svg>
+      <span class="brand__name">AlertKeeper</span>
+      <span class="brand__version">0.2.12</span>
+    </a>
+  </div>
+  <nav class="nav" aria-label="Pages">
+    
+    <a class="nav__link" href="index.html">Start here</a>
+    
+    <a class="nav__link" href="help.html">Help</a>
+    
+    <a class="nav__link nav__link--current" href="guides.html" aria-current="page">Guides</a>
+    
+    <a class="nav__link" href="report.html">Send a report</a>
+    
+  </nav>
+</header>
+<main class="page stack page--text">
+
+<nav class="row settings-bar" aria-label="Help sections"><a href="help.html">← All help</a><a href="getting-started.html">Getting started</a><a href="words.html">Words AlertKeeper uses</a><a href="pages.html">The pages</a><a href="guides.html" aria-current="page">Guides</a><a href="review.html">Review</a><a href="troubleshooting.html">Troubleshooting</a><a href="numbers.html">Why my numbers differ from my broker&#39;s or another program&#39;s</a><a href="report.html">Send a report</a><a href="about.html">About</a></nav>
+<h1 class="page-title">Prices</h1>
+<p class="lead">AlertKeeper shows each position's latest price, its unrealized P/L, a price chart on each ticker's page, and how your closes have worked out since. Prices are fetched by your computer, for your own personal use.</p>
+
+
+<section class="card">
+  <div class="card__head"><h2 class="card__title">Steps</h2></div>
+  
+  <ol class="steps"><li>Choose the source in <b>Settings → Prices</b>: <b>Yahoo Finance (free, for personal use)</b> is the default. Or choose <b>None</b>: everything else works, and prices say "no prices".</li><li>The market keeps New York time, and so does AlertKeeper for everything about trading -- the day a price is "as of", days to expiry, what's still in force -- wherever your computer is; times it shows you (kept, checked, backed up) are your own. When your clock isn't on New York time, a market date says "(New York)".</li><li>Prices are fetched only for what needs them: your open positions (paper too), the paid services' recs still in force, and options you closed, until their last trading day. A stock or fund you've sold isn't fetched again.</li><li>A mutual fund is a position like shares, marked <b>fund</b>, priced at its daily NAV — which the fund posts in the evening: until 7 PM New York time it shows the day before's, "as of" that day. A money-market or sweep fund (the one your broker keeps your cash in) is your account's cash, not a position.</li><li>Option prices are saved each evening, shortly after the market closes (4:05 PM New York time, 1:05 PM on a half day), for every contract you hold (paper too), every contract a paid alert names, and every contract you closed, until its last day (Exit Scorecard measures your close against it).</li><li>Leave AlertKeeper open in the evening. Yahoo keeps no history for options: if the computer is off that evening and isn't opened before the next morning's market open, that day has no price for options. AlertKeeper says "no price — not scored" for it; it never guesses.</li><li>An option that expired is valued from the underlying stock's close on expiry day: "expired · worthless" or "expired · worth $X". A paper option settles on its own at expiry.</li></ol>
+  
+
+</section>
+<section class="card">
+  <div class="card__head"><h2 class="card__title">What you should see</h2></div>
+  
+  <ul class="steps"><li>On Positions: a Price and an Unrealized P/L for each position, with the day and the source under the price.</li><li>On a ticker's page: its daily closes with A (a service's alert), B (your buy) and C (your close).</li><li>On Exit Scorecard: each close against the service's exit or the contract's last day; a close still waiting for that day shows its reading so far.</li></ul>
+
+</section>
+<section class="card">
+  <div class="card__head"><h2 class="card__title">If it doesn&#39;t work</h2></div>
+  
+  <ul class="steps"><li>"No price yet for ABCDX, WXYZ" (Health and Here's what's going on): those instruments got no price this time, said why in plain words; every other price was updated. The price source's own message is in Copy diagnostics on Health.</li><li>Health says "Prices not updated since …": no price at all could be fetched (the computer was off or offline, or Yahoo didn't answer). AlertKeeper tries again on its own; nothing wrong is shown meanwhile.</li><li>A position says "no price": nothing has been saved for it yet (a new ticker gets its first prices the next evening), or the source didn't list it.</li><li>Yahoo changes things now and then and the free source can stop working for a while. Choose None in Settings → Prices to switch prices off until it's fixed.</li></ul>
+
+</section>
+
+
+
+</main>
+<footer class="site-foot">
+  <p><a href="index.html#statement">Information, not advice — see the full statement</a></p>
+  <p class="muted">AlertKeeper 0.2.12. Every picture here shows made-up data.</p>
+</footer>
+</body>
+</html>

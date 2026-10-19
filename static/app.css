@@ -1,0 +1,373 @@
+/* AlertKeeper pages. Only the design tokens (design/tokens.yaml) may set colours, sizes and spacing here:
+   tests/test_design_system.py fails on a raw colour, a size off the scale, or a class no page uses. */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { font-size: var(--text-md); }
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: var(--text-md);
+  line-height: var(--leading);
+  font-weight: var(--weight-body);
+}
+a { color: var(--color-accent); }
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-visible {
+  outline: var(--size-focus) solid var(--color-focus);
+  outline-offset: var(--size-focus);
+}
+h1, h2, h3, p { margin: 0; }
+
+.visually-hidden {
+  position: absolute; width: var(--size-border); height: var(--size-border); overflow: hidden;
+  clip-path: inset(50%); white-space: nowrap;
+}
+
+/* ---- Frame ---------------------------------------------------------------------------------------- */
+.topbar {
+  background: var(--color-surface);
+  border-bottom: var(--size-border) solid var(--color-border);
+}
+.topbar__inner {
+  max-width: var(--size-page); margin: 0 auto; padding: var(--space-2) var(--density-page-x);
+  display: flex; align-items: center; gap: var(--density-gap); flex-wrap: wrap;
+}
+.brand { display: flex; align-items: center; gap: var(--space-2); color: var(--color-text); text-decoration: none; }
+.brand__mark { width: var(--size-mark); height: var(--size-mark); }
+.brand__desk { fill: var(--color-accent); }
+.brand__dot { fill: var(--color-note); stroke: var(--color-surface); stroke-width: var(--size-focus); }
+.brand__name { font-size: var(--text-lg); font-weight: var(--weight-strong); }
+.brand__version { font-size: var(--text-sm); color: var(--color-text-mute); }  /* the version, always in sight (owner 10/9) */
+/* The Ticker tab's search (owner 10/19: the tab is the search page; the top bar has no box) */
+.search { display: flex; flex-wrap: wrap; gap: var(--space-2); align-items: center; }
+.recent { display: flex; flex-wrap: wrap; gap: var(--space-2); align-items: baseline; }
+.theme { display: flex; gap: var(--space-1); align-items: center; margin-left: auto; }
+.theme__label { color: var(--color-text-mute); font-size: var(--text-sm); }
+/* Help as "?" at the top right (owner 10/18) */
+.help-link {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: var(--size-control); min-height: var(--size-control); border-radius: var(--radius-pill);
+  border: var(--size-border) solid var(--color-border); color: var(--color-text-dim);
+  font-weight: var(--weight-strong); text-decoration: none;
+}
+.help-link:hover, .help-link--current { color: var(--color-text); border-color: var(--color-accent); }
+
+.nav {
+  max-width: var(--size-page); margin: 0 auto; padding: 0 var(--density-page-x);
+  display: flex; gap: var(--space-1); flex-wrap: wrap;
+}
+.nav__link {
+  display: inline-flex; align-items: center; gap: var(--space-1);
+  padding: var(--space-2) var(--space-2); color: var(--color-text-dim); text-decoration: none;
+  border-bottom: var(--size-focus) solid transparent;
+}
+.nav__link--off { color: var(--color-text-mute); font-size: var(--text-sm); }  /* an add-on that's off (10/18) */
+.nav__link--current { color: var(--color-text); border-bottom-color: var(--color-accent); font-weight: var(--weight-medium); }
+.nav__count {
+  min-width: var(--space-5); padding: 0 var(--space-2); border-radius: var(--radius-pill);
+  background: var(--color-action-bg); color: var(--color-action); font-size: var(--text-xs);
+  font-weight: var(--weight-strong); text-align: center;
+}
+
+.page { max-width: var(--size-page); margin: 0 auto; padding: var(--space-4) var(--density-page-x) var(--space-7); }
+.page--wide { max-width: none; }  /* the Ledger: a book is wide */
+.page.page--text > * { max-width: var(--size-text-page); }  /* pages that are mostly words: Help, guides, the setup */
+.field.field--custom { display: none; }
+form:has(option[value="custom"]:checked) .field.field--custom { display: flex; }
+.stack > * { min-width: 0; max-width: 100%; }  /* a wide table scrolls inside its frame; the page never scrolls sideways */
+/* Density (owner 10/7): things are as wide as what they hold, not stretched across the page. */
+.stack { display: flex; flex-direction: column; align-items: flex-start; gap: var(--density-gap); }
+.row { display: flex; gap: var(--density-field-gap) var(--density-gap); align-items: center; flex-wrap: wrap; }
+.card p, .lead, .since { max-width: var(--size-text-page); }
+.page-title { font-size: var(--text-xl); font-weight: var(--weight-strong); }
+.section-title { font-size: var(--text-lg); font-weight: var(--weight-strong); }
+.lead { color: var(--color-text-dim); }
+.muted { color: var(--color-text-mute); font-size: var(--text-sm); }
+.num { text-align: right; font-variant-numeric: tabular-nums; }
+.mono { font-family: var(--font-mono); font-size: var(--text-sm); overflow-wrap: anywhere; }
+/* Health (step 10): one card per part, side by side where there's room. */
+.health-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(var(--size-card-min), 1fr)); gap: var(--space-4); }
+.diagnostics { white-space: pre-wrap; margin: 0; }
+/* Settings and Help as menus (owner 10/8): the groups listed, each on a page of its own under a slim bar of them. */
+.settings-menu .todo__item a { font-weight: var(--weight-medium); }
+.settings-bar { gap: var(--space-1) var(--space-3); font-size: var(--text-sm); padding-bottom: var(--space-2);
+  border-bottom: var(--size-border) solid var(--color-border); }
+.settings-bar a[aria-current="page"] { color: var(--color-text); font-weight: var(--weight-strong); text-decoration: none; }
+/* An add-form behind its button: the page opens with what's there and its actions. */
+/* Buttons answer at once (owner 10/9): busy -- dimmed, its busy words, not clickable -- until the answer comes. */
+.btn--busy { opacity: 0.6; cursor: progress; pointer-events: none; }
+.busy-note { color: var(--color-text-dim); font-size: var(--text-sm); }
+/* AlertKeeper is gone (owner 10/11): quit, or closing for an update -- said across the top of the page. */
+.gone { position: sticky; top: 0; z-index: 10; margin: 0; padding: var(--space-3) var(--space-4); background: var(--color-note-bg); color: var(--color-text); border-bottom: var(--size-border) solid var(--color-note); font-weight: var(--weight-medium); }
+.adder > summary { list-style: none; display: inline-flex; }
+.adder > summary::-webkit-details-marker { display: none; }
+.adder[open] > summary { margin-bottom: var(--space-2); }
+.adder--inline { display: inline-block; vertical-align: middle; }
+.adder__form { padding: var(--space-3); border: var(--size-border) solid var(--color-border); border-radius: var(--radius-sm);
+  background: var(--color-surface); }
+/* The setup (owner 10/7): the steps and what's done in a list beside the step, which reads at text width. */
+.wizard { display: grid; grid-template-columns: var(--size-aside) minmax(0, var(--size-text-page)); gap: var(--density-gap) var(--space-5); align-items: start; }
+.wizard__steps { display: flex; flex-direction: column; gap: var(--density-gap); font-size: var(--text-sm); position: sticky; top: var(--space-4); }
+.wizard__main { min-width: 0; }
+.nowrap { white-space: nowrap; }
+.steps { margin: 0; padding-left: var(--space-5); display: flex; flex-direction: column; gap: var(--space-2); }
+.textarea { min-height: calc(var(--density-control) * 3); padding: var(--space-2) var(--space-2); resize: vertical; }
+.journal { display: flex; flex-direction: column; gap: var(--space-1); padding: var(--space-2) 0; border-bottom: var(--size-border) solid var(--color-border); }
+.journal__meta { color: var(--color-text-mute); font-size: var(--text-sm); }
+.journal__text { white-space: pre-wrap; overflow-wrap: anywhere; }
+/* A stored letter as it was sent (owner 10/8): a sealed frame, white like the mail it was; resizable. */
+.letter-frame { display: block; width: 100%; height: var(--size-letter); min-height: var(--size-pop-height); resize: vertical;
+  border: var(--size-border) solid var(--color-border); border-radius: var(--radius-md); background: var(--color-letter-paper); }
+.letter-text { max-width: var(--size-text-page); }
+.table__note > td { background: var(--color-surface-2); }
+.table__muted > td { color: var(--color-text-mute); }  /* information-only lines on the Feed */
+/* The Ledger (owner 10/6): one line per row; what takes more opens under the row on a click (no script needed). */
+.table--ledger td, .table--ledger th { white-space: nowrap; padding-left: var(--space-2); padding-right: var(--space-2); }
+.table--ledger .journal__cell { max-width: 0; overflow: hidden; text-overflow: ellipsis; }
+.row-toggle { color: var(--color-accent); font-size: var(--text-sm); cursor: pointer; }
+.row-toggle:has(input:focus-visible) { outline: var(--size-focus) solid var(--color-focus); outline-offset: var(--size-focus); }
+.table__more--toggle { display: none; }
+.table tr:has(.row-toggle input:checked) + .table__more--toggle { display: table-row; }
+.table .table__more > td { white-space: normal; }  /* an opened row is a panel, not a row: its words wrap */
+.table--ledger .table__more > td { white-space: normal; padding-top: 0; color: var(--color-text-dim); }
+@media print {
+  .topbar, .no-print, form { display: none; }
+  .table-wrap { overflow: visible; border: 0; }
+}
+/* Signed money (owner 10/7): every gain or loss through the one "signed" macro -- green up, red down, plain at
+   zero, the sign always written, so colour is never the only cue. */
+.money { font-variant-numeric: tabular-nums; white-space: nowrap; }
+.money--gain { color: var(--color-gain); }
+.money--loss { color: var(--color-loss); }
+
+.back { align-self: flex-start; font-weight: var(--weight-medium); text-decoration: none; padding: var(--space-1) 0; }
+
+/* ---- Cards: one status value sets the colour and the words (templates/_macros.html) ---------------- */
+.card {
+  background: var(--color-surface); border: var(--size-border) solid var(--color-border);
+  border-left: var(--size-edge) solid var(--color-border); border-radius: var(--radius-md);
+  padding: var(--density-card); display: flex; flex-direction: column; align-items: flex-start;
+  gap: var(--density-field-gap);
+}
+.card > * { max-width: 100%; }
+.card__head { display: flex; align-items: baseline; gap: var(--space-3); flex-wrap: wrap; }
+.card__title { font-size: var(--text-lg); font-weight: var(--weight-strong); }
+.card__status {
+  font-size: var(--text-sm); font-weight: var(--weight-medium); padding: 0 var(--space-2);
+  border-radius: var(--radius-pill);
+}
+.card--ok { border-left-color: var(--color-ok); }
+.card--ok .card__status { background: var(--color-ok-bg); color: var(--color-ok); }
+.card--info { border-left-color: var(--color-info); }
+.card--info .card__status { background: var(--color-info-bg); color: var(--color-info); }
+.card--note { border-left-color: var(--color-note); }
+.card--note .card__status { background: var(--color-note-bg); color: var(--color-note); }
+.card--action { border-left-color: var(--color-action); }
+.card--action .card__status { background: var(--color-action-bg); color: var(--color-action); }
+
+/* ---- "Here's what's going on" --------------------------------------------------------------------- */
+.since { color: var(--color-text-dim); }
+.site-foot { max-width: var(--size-page); margin: 0 auto; padding: var(--space-4) var(--density-page-x) var(--space-6); border-top: var(--size-border) solid var(--color-border); display: flex; flex-direction: column; gap: var(--space-1); }  /* the public Help site's foot (10/13): "Information, not advice." on every page */
+.as-of { overflow-wrap: anywhere; }  /* Positions' header line (10/12): a long file name wraps, never widens the page */
+.since--problem { color: var(--color-action); font-weight: var(--weight-medium); }  /* an update that failed (10/11) */
+.todo { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--space-1); }
+.todo__item { display: flex; gap: var(--space-3); align-items: baseline; flex-wrap: wrap; }
+.todo__where { color: var(--color-text-mute); font-size: var(--text-sm); }
+
+/* ---- Tables --------------------------------------------------------------------------------------- */
+/* Tables (owner 10/7): only as wide as their content; one line per row at desktop width (long text stops with
+   "…", the whole of it on hover or opened); text left, numbers right in tabular figures; tight gutters. */
+.table-wrap { position: relative; overflow-x: auto; max-width: 100%; border: var(--size-border) solid var(--color-border); border-radius: var(--radius-md); }
+/* More to see sideways (app.js marks it): a faint shadow on that edge of the frame. */
+.table-wrap--more { box-shadow: var(--space-1) 0 var(--space-2) calc(-1 * var(--space-1)) var(--color-shadow); }
+.table-wrap--less { box-shadow: calc(-1 * var(--space-1)) 0 var(--space-2) calc(-1 * var(--space-1)) var(--color-shadow); }
+.table-wrap--less.table-wrap--more { box-shadow: calc(-1 * var(--space-1)) 0 var(--space-2) calc(-1 * var(--space-1)) var(--color-shadow),
+  var(--space-1) 0 var(--space-2) calc(-1 * var(--space-1)) var(--color-shadow); }
+.table { width: auto; border-collapse: collapse; background: var(--color-surface); font-size: var(--density-table-text); }
+.table th, .table td { padding: var(--density-cell-y) var(--density-cell-x); border-bottom: var(--size-border) solid var(--color-border); text-align: left; vertical-align: baseline; white-space: nowrap; }
+.table th { background: var(--color-surface-2); font-size: var(--text-xs); font-weight: var(--weight-medium); color: var(--color-text-dim); }
+.table th.num, .table td.num { text-align: right; font-variant-numeric: tabular-nums; }
+.table tbody tr:hover > td { background: var(--color-surface-2); }
+.days--soon { color: var(--color-note); font-weight: var(--weight-strong); }  /* under 7 days left (owner 10/8) */
+.cell-clip { max-width: var(--size-clip); overflow: hidden; text-overflow: ellipsis; }
+.cell-clip--narrow { max-width: var(--density-clip-fit); }  /* a table with many columns: fits 1280px */
+.cell-clip--watch { max-width: var(--density-clip-watch); }
+/* Positions (owner 10/11): with Day beside Unrealized P/L, a long header may take two lines when the page is
+   narrow (Roomy); the rows stay one line each. */
+.table--wrap-head thead th { white-space: normal; }  /* Positions' Who's watching, beside Day */
+.table--fit th, .table--fit td { padding-left: var(--density-fit-x); padding-right: var(--density-fit-x); }
+.table tr:last-child td { border-bottom: 0; }
+/* Totals (owner 10/11): a subtotal per account, the total, paper's own -- below the rows, set apart. */
+.table tfoot .table__total > th, .table tfoot .table__total > td { background: var(--color-surface-2); border-top: var(--size-border) solid var(--color-border); }
+.table tfoot .table__total > th { font-size: inherit; color: var(--color-text); text-align: left; white-space: normal; }
+.table tfoot .table__total--sum > * { font-weight: var(--weight-medium); }
+/* A row that opens up (Trades: fills and lots) sits right under its row, as one entry. */
+.table tr:has(+ .table__more) td { border-bottom: 0; }
+.table__more > td { padding-top: 0; }
+.table__more summary { color: var(--color-accent); font-size: var(--text-sm); cursor: pointer; padding: var(--space-1) 0; }
+.chip {
+  display: inline-block; font-size: var(--text-xs); padding: 0 var(--space-2); border-radius: var(--radius-sm);
+  background: var(--color-surface-2); color: var(--color-text-dim);
+}
+/* A paper account's badge (owner 10/7): practice money, never mistaken for a real account. */
+.chip--manual { background: var(--color-note-bg); color: var(--color-note); }  /* a manual fill not yet confirmed: amber, the provisional colour */
+.chip--action { background: var(--color-action-bg); color: var(--color-action); }  /* an add-on's flag that wants you (10/18) */
+.chip--paper { background: transparent; color: var(--color-accent); border: var(--size-border) dashed var(--color-accent); }
+
+/* ---- Forms and buttons (only these button styles exist) ------------------------------------------- */
+/* Forms (owner 10/7): a label and its input side by side on one line; inputs sized to what they hold. */
+.field { display: flex; flex-direction: row; align-items: center; gap: var(--density-field-gap); }
+.field__label { font-size: var(--text-sm); color: var(--color-text-dim); font-weight: var(--weight-medium); }
+fieldset.field { display: block; }
+fieldset.field > legend { float: left; padding: 0; margin-right: var(--density-field-gap); line-height: var(--density-control); }
+.input, .select {
+  min-height: var(--density-control); padding: 0 var(--space-2); font: inherit; color: var(--color-text);
+  background: var(--color-surface); border: var(--size-border) solid var(--color-control-border);
+  border-radius: var(--radius-sm); max-width: 100%;
+}
+.input--xs { width: var(--size-input-xs); }
+.input--sm { width: var(--size-input-sm); }
+.input--md { width: var(--size-input-md); }
+.input--lg { width: var(--size-input-lg); }
+.input--full { width: var(--size-text-page); }
+.input--secret { -webkit-text-security: disc; }  /* the app password: masked, yet no password field
+   for a password manager to pair with the address (owner 10/8) */
+.btn {
+  min-height: var(--density-control); padding: 0 var(--space-3); font: inherit; font-weight: var(--weight-medium);
+  border-radius: var(--radius-sm); border: var(--size-border) solid var(--color-control-border);
+  background: var(--color-surface); color: var(--color-text); cursor: pointer;
+  display: inline-flex; align-items: center; text-decoration: none;  /* a link can look like a button */
+}
+.btn--primary { background: var(--color-accent); border-color: var(--color-accent); color: var(--color-on-accent); }
+.btn--quiet { border-color: transparent; background: transparent; color: var(--color-accent); }
+.btn--current { border-color: var(--color-accent); color: var(--color-accent); }
+.choice { display: flex; gap: var(--space-2); align-items: center; }
+fieldset.field { border: 0; margin: 0; padding: 0; }
+.dropzone {
+  border: var(--size-focus) dashed var(--color-control-border); border-radius: var(--radius-lg);
+  padding: var(--space-6) var(--space-4); display: flex; flex-direction: column; gap: var(--space-3);
+  align-items: center; text-align: center; background: var(--color-surface);
+}
+.dropzone--over { border-color: var(--color-accent); background: var(--color-surface-2); }
+.message { padding: var(--space-3); border-radius: var(--radius-sm); background: var(--color-action-bg); color: var(--color-action); }
+
+/* ---- ? help markers: a popover over the page, never in its flow (owner 10/6) ----------------------- */
+.help__mark {
+  cursor: pointer; display: inline-flex; align-items: center; justify-content: center; vertical-align: middle;
+  width: var(--space-5); height: var(--space-5); padding: 0; border-radius: var(--radius-pill);
+  border: var(--size-border) solid var(--color-control-border); background: var(--color-surface);
+  color: var(--color-text-dim); font: inherit; font-size: var(--text-xs); font-weight: var(--weight-strong);
+}
+.help__mark:hover { border-color: var(--color-accent); color: var(--color-accent); }
+/* --pop-left / --pop-top are set by app.js from the marker's place; without it the browser centres the popover. */
+.help__pop {
+  position: fixed; inset: auto; margin: 0; left: var(--pop-left); top: var(--pop-top);
+  width: var(--size-pop); max-height: var(--size-pop-height); overflow-y: auto;
+  padding: var(--space-3) var(--space-4); border: var(--size-border) solid var(--color-control-border);
+  border-radius: var(--radius-md); background: var(--color-surface); color: var(--color-text);
+  font-size: var(--text-sm); font-weight: var(--weight-body); line-height: var(--leading); text-align: left;
+  white-space: normal; box-shadow: 0 var(--space-1) var(--space-4) var(--color-shadow);
+}
+
+/* ---- Needs a look --------------------------------------------------------------------------------- */
+.look { display: flex; flex-direction: column; gap: var(--space-2); }
+.look__rows { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--space-1); }
+.look__row { display: flex; flex-direction: column; gap: var(--space-1); }
+
+/* ---- Help page ------------------------------------------------------------------------------------ */
+.terms { display: grid; grid-template-columns: max-content minmax(0, var(--size-text-page)); gap: var(--space-1) var(--density-gap); margin: 0; }
+.terms dt { font-weight: var(--weight-medium); }
+.help-sources h3 { margin-top: var(--space-3); }
+.help-figure { margin: var(--space-2) 0 0; }
+.help-picture { display: block; max-width: 100%; height: auto;
+  border: var(--size-border) solid var(--color-border); border-radius: var(--radius-md); }
+.terms dd { margin: 0; color: var(--color-text-dim); }
+
+/* ---- Figures and charts (charts: one series, gain/loss never colour alone) ------------------------- */
+.figures { display: flex; flex-wrap: wrap; gap: var(--density-gap) var(--space-5); }
+.figure { display: flex; flex-direction: column; gap: var(--space-1); }
+/* Performance's tiles in a grid (owner 10/13, like the maker's earlier tool's): four across at desktop width, three when the window
+   won't take four, one per row on a phone. */
+.figures--tiles { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); width: 100%; }
+@media (max-width: 1180px) { .figures--tiles { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.figure__label { color: var(--color-text-dim); font-size: var(--text-sm); }
+.figure > .muted { max-width: var(--size-card-min); }  /* a figure's footnote wraps; it never spreads the row */
+.figure__value { font-size: var(--text-xl); font-weight: var(--weight-strong); font-variant-numeric: tabular-nums; }
+.chart { width: var(--size-chart); max-width: 100%; height: auto; }
+.chart--narrow { display: none; }
+.chart__grid { stroke: var(--color-chart-grid); stroke-width: var(--size-border); }
+.chart__zero { stroke: var(--color-text-mute); stroke-width: var(--size-border); }
+.chart__line { fill: none; stroke: var(--color-chart-line); stroke-width: var(--size-focus); }
+.chart__dot { fill: var(--color-chart-line); stroke: var(--color-surface); stroke-width: var(--size-focus); }
+.chart__hit { fill: transparent; }
+.chart__bar--gain { fill: var(--color-chart-gain); }
+.chart__bar--loss { fill: var(--color-chart-loss); }
+.chart__bar { stroke: var(--color-surface); stroke-width: var(--size-focus); }
+.chart__label { fill: var(--color-text-mute); font-size: var(--text-xs); }
+.chart__value { fill: var(--color-text); font-size: var(--text-xs); font-weight: var(--weight-medium); }
+.chart__value--gain { fill: var(--color-gain); }
+.chart__value--loss { fill: var(--color-loss); }
+/* Price chart markers (step 8): shape and letter say what each is (A alert, B your buy, C your close). */
+.chart__line--price { stroke-linejoin: round; }
+.chart__shade { fill: var(--color-surface-2); }
+.chart__marker path, .chart__marker circle, .chart__marker rect { fill: var(--color-surface); stroke: var(--color-text); stroke-width: var(--size-border); }
+.chart__marker--alert path { stroke: var(--color-accent); stroke-width: var(--size-focus); }
+.chart__stem { stroke: var(--color-text-mute); stroke-width: var(--size-border); stroke-dasharray: var(--size-border) var(--size-border); }
+.chart__letter { fill: var(--color-text); font-size: var(--text-xs); font-weight: var(--weight-strong); pointer-events: none; }
+.numbers summary { cursor: pointer; color: var(--color-accent); font-size: var(--text-sm); }
+
+/* ---- Phone width ---------------------------------------------------------------------------------- */
+@media (max-width: 720px) {
+  .topbar__inner { padding: var(--space-2) var(--space-3); gap: var(--space-2); }
+  .theme { margin-left: 0; }
+  .nav { padding: 0 var(--space-2); }
+  .nav__link { white-space: nowrap; padding: var(--space-1) var(--space-2); }
+  /* Tables become one small block per row, each value with its column's name. */
+  .table--stack thead { display: none; }
+  .table--stack tr { display: block; padding: var(--space-2) 0; border-bottom: var(--size-border) solid var(--color-border); }
+  .table--stack tr:last-child { border-bottom: 0; }
+  .table-wrap, .table { width: 100%; }
+  .table--stack td { display: flow-root; border-bottom: 0; padding: var(--space-1) var(--space-3); text-align: right; white-space: normal; overflow-wrap: anywhere; }  /* flow-root: an empty cell keeps its label on a line of its own */
+  .table--stack .cell-clip, .table--stack .cell-clip--narrow, .table--stack .cell-clip--watch { max-width: none; overflow: visible; }
+  .field { flex-wrap: wrap; }
+  .input--full, .input--lg { width: 100%; }
+  .table--stack td::before { content: attr(data-label); float: left; margin-right: var(--space-3); color: var(--color-text-mute); font-size: var(--text-sm); text-align: left; }
+  .table--stack td.num { text-align: right; }
+  .table--stack tfoot th { display: block; padding: var(--space-1) var(--space-3); white-space: normal; }
+  .table--stack tfoot td:empty { display: none; }
+  .table--stack tr:has(+ .table__more) { border-bottom: 0; }
+  .table--stack .table__more > td, .table--stack .table__note > td { display: block; text-align: left; }
+  .table--ledger td { white-space: normal; }
+  .table--ledger .journal__cell { max-width: none; }
+  .table--stack .table__more--toggle { display: none; }
+  .table--stack tr:has(.row-toggle input:checked) + .table__more--toggle { display: block; }
+  .table--stack td > .select { width: 100%; min-width: 0; }  /* a choice in a stacked row fits a phone */
+  .page { padding: var(--space-3) var(--space-3) var(--space-6); }
+  .terms { grid-template-columns: 1fr; }
+  .figures--tiles { grid-template-columns: 1fr; }
+  .wizard { grid-template-columns: 1fr; }
+  .wizard__steps { position: static; }
+  .chart--wide { display: none; }
+  .help__pop {
+    left: 0; right: 0; top: auto; bottom: 0; width: 100%; max-height: var(--size-sheet);
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0; border-width: var(--size-border) 0 0 0;
+  }
+  .chart--narrow { display: block; }
+}
+
+/* The option chain (owner 10/11): the strike nearest the last price stands out. */
+.chain__near > td { background: var(--color-surface-2); }
+
+/* The Feed by letter (owner 10/12): a block per letter that opens and closes; information-only letters grey. */
+.letter { align-self: stretch; border: var(--size-border) solid var(--color-border); border-radius: var(--radius-md); background: var(--color-surface); }
+.letter__head { cursor: pointer; padding: var(--space-2) var(--space-3); }
+.letter[open] > .letter__head { border-bottom: var(--size-border) solid var(--color-border); }
+.letter__title { overflow-wrap: anywhere; }
+.letter__open { margin-left: var(--space-2); font-size: var(--text-sm); }
+.letter--info { color: var(--color-text-dim); }
+/* Owner 10/15: a letter with orders stands out -- the needs-you edge and tint; information-only ones stay grey. */
+.letter--orders { border-left: var(--size-edge) solid var(--color-note); }
+.letter--orders > .letter__head { background: var(--color-note-bg); border-radius: var(--radius-md) var(--radius-md) 0 0; }
+.letter--orders:not([open]) > .letter__head { border-radius: var(--radius-md); }

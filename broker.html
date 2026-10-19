@@ -1,0 +1,78 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Connect Schwab · AlertKeeper</title>
+  <link rel="stylesheet" href="static/tokens.css">
+  <link rel="stylesheet" href="static/app.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar__inner">
+    <a class="brand" href="index.html" aria-label="AlertKeeper: Start here">
+      <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true">
+        <rect class="brand__desk" x="3" y="9" width="24" height="18" rx="4"/>
+        <circle class="brand__dot" cx="25" cy="9" r="5"/>
+      </svg>
+      <span class="brand__name">AlertKeeper</span>
+      <span class="brand__version">0.2.12</span>
+    </a>
+  </div>
+  <nav class="nav" aria-label="Pages">
+    
+    <a class="nav__link" href="index.html">Start here</a>
+    
+    <a class="nav__link" href="help.html">Help</a>
+    
+    <a class="nav__link nav__link--current" href="guides.html" aria-current="page">Guides</a>
+    
+    <a class="nav__link" href="report.html">Send a report</a>
+    
+  </nav>
+</header>
+<main class="page stack page--text">
+
+<nav class="row settings-bar" aria-label="Help sections"><a href="help.html">← All help</a><a href="getting-started.html">Getting started</a><a href="words.html">Words AlertKeeper uses</a><a href="pages.html">The pages</a><a href="guides.html" aria-current="page">Guides</a><a href="review.html">Review</a><a href="troubleshooting.html">Troubleshooting</a><a href="numbers.html">Why my numbers differ from my broker&#39;s or another program&#39;s</a><a href="report.html">Send a report</a><a href="about.html">About</a></nav>
+<h1 class="page-title">Connect Schwab</h1>
+<p class="lead">AlertKeeper reads your Schwab accounts through Schwab's own API, with an app key of your own: once a day it brings in your positions and balances, the transactions since the last read, and the greeks of your open options. It never trades. Your broker files keep working as before -- a row both carry is counted once, matched by what it means: Schwab's API lists each fill of an order where the file shows the order, dates an expiry the day it was posted, and moves cash to and from its bank sweep, which the files never show. The app key must be yours alone: Schwab keeps one sign-in per app key and login, so another program signing in with the same key ends AlertKeeper's sign-in (and the other way round).</p>
+
+
+<section class="card">
+  <div class="card__head"><h2 class="card__title">Steps</h2></div>
+  
+  <ol class="steps"><li>If another program on this computer already signs in to Schwab with the app key you mean to use, don't sign in twice -- AlertKeeper's sign-in would end that program's. Set that program to use AlertKeeper's sign-in instead (<i>Sharing the sign-in with your own programs</i>, below), and only then Connect here.</li><li>On <b>developer.schwab.com</b>, sign up for a developer account with your Schwab login. Schwab looks at new developer accounts before they can make apps; that can take a few days.</li><li>Make <b>one app, just for AlertKeeper</b> (the product <i>Accounts and Trading Production</i>). For its callback, copy the address <b>Settings → Broker</b> shows -- this computer (127.0.0.1), port 8080, /callback -- exactly; choose another port there first if 8080 is taken on your computer. Schwab reviews new apps: wait until it says <i>Ready For Use</i>.</li><li>Your app's page there shows its <b>App key</b> and <b>Secret</b>. In AlertKeeper: <b>Settings → Broker</b>, type both and the callback port, and press <b>Connect</b>. Both go into your Keychain (Mac) or Credential Manager (Windows), never into a file.</li><li>Schwab's sign-in opens in your browser: sign in, allow access, and choose the accounts AlertKeeper may read.</li><li>The browser then warns that 127.0.0.1's connection isn't private: that's AlertKeeper on your own computer, catching Schwab's answer. Choose to go on (Advanced → Proceed). If the browser won't, copy the whole address from its address bar into <b>Or paste the address</b> on Settings → Broker.</li><li>Press <b>Read now</b> on Settings → Broker for the first read (two years of transactions, a minute or two); after that it happens by itself once a day, and the button says when: <b>Read at 2:17 PM</b>.</li></ol>
+  
+
+</section>
+<section class="card">
+  <div class="card__head"><h2 class="card__title">What you should see</h2></div>
+  
+  <ul class="steps"><li>Settings → Broker: <b>Connected · sign in again by</b> a day 7 days ahead (and how long that is), and a table of your Schwab accounts -- each with the AlertKeeper account it fills, when it was last read, its cash and its value. An account AlertKeeper already had (the same last digits) is filled; a new one appears as "Schwab ...123" -- <b>rename</b> it on Settings → Accounts. An account you don't want (an empty one, say): <b>Read it?</b> says Reading; <b>change</b> makes it Not read -- the daily read leaves it alone and never makes it again.</li><li>A position moved whole from one of your accounts to another ends in the first with no gain or loss and goes on in the second.</li><li>A close of a position opened before the oldest history Schwab gives (two years back) is a grey note on Trades -- its gain isn't known, so it's in no total. Nothing to do.</li><li>Two days before the 7-day sign-in ends, Positions and AlertKeeper's dot say "Sign in to Schwab again by Tue 10/21 2:16 PM": <b>Connect again</b> on Settings → Broker, and it clears.</li><li>Positions: your Schwab positions and trades, as with your files, and <b>Δ · Θ</b> (delta and theta) beside each open option.</li><li>Health's Broker card: when each account was last read, and the daily refresh. Schwab's sign-in lasts 7 days; then it wants you to sign in again: <b>Connect again</b>.</li></ul>
+
+</section>
+<section class="card">
+  <div class="card__head"><h2 class="card__title">If it doesn&#39;t work</h2></div>
+  
+  <ul class="steps"><li>Health's Broker card is red, "Schwab refused the token's refresh" with Schwab's reason: the sign-in ended early (often another program signed in with the same app key). <b>Connect again</b>; if another program uses the key, give AlertKeeper an app of its own.</li><li>"Port 8080 is in use": another program is listening there right now. Try again in a minute, or paste the address.</li><li>"Schwab said no": the key or secret was typed wrong, or the app isn't Ready For Use yet, or its callback isn't exactly the one Settings → Broker shows.</li><li>A row under Review in Schwab's own words: a kind of transaction AlertKeeper doesn't read yet. It's kept as Schwab gave it, never guessed; your broker file for those days fills the gap.</li><li>An account's line on Settings → Broker says what went wrong when a read didn't finish; the next day's read tries again from where the last whole one ended.</li><li>To stop: <b>Disconnect</b> wipes the key, the secret and the tokens.</li></ul>
+
+</section>
+
+<section class="card" id="sharing">
+  <div class="card__head"><h2 class="card__title">Sharing the sign-in with your own programs</h2></div>
+  <p>Most people never need this. It's for someone who also runs a program of their own that reads Schwab with the same app key: rather than signing in itself -- which would end AlertKeeper's sign-in -- that program can use AlertKeeper's.</p><p>The sign-in's state, always: AlertKeeper keeps a small file other programs on this computer may read, <b>broker/schwab-status.json</b> in AlertKeeper's data folder (~/Library/Application Support/AlertKeeper on a Mac, %LOCALAPPDATA%\AlertKeeper on Windows): when the current access token runs out (<i>expires_at</i>), when it was last refreshed (<i>last_refresh_at</i>) and, if Schwab refused a refresh, its code, words and time (<i>refusal</i>) -- times in seconds since 1970. No token is ever in it.</p><p>The token itself, only when you say: on Settings → Broker, <b>Share the sign-in with other programs on this Mac</b> (off until you turn it on). AlertKeeper then writes <b>broker/schwab-share.json</b>, which only you can read, with the <i>address</i> to ask and the <i>key</i>. Your program sends a GET to that address with the header <i>Authorization: Bearer</i> and the key, and gets back <i>access_token</i> and <i>expires_at</i> (seconds since 1970); AlertKeeper keeps the token fresh, so it answers at once. A wrong key gets 401 -- read the file again, AlertKeeper may have started since; with sharing off, or no sign-in, 503. Never the refresh token, the app key or the secret; only from this computer; a new key each time AlertKeeper starts; nothing at all while the switch is off. The Broker page says it's on, and when the sign-in was last given.</p>
+</section>
+
+<section class="card">
+  <div class="card__head"><h2 class="card__title">Good to know</h2></div>
+  <ul class="steps"><li>What is stored where: the app key, the secret and the tokens only in your Keychain (Mac) or Credential Manager (Windows) -- never in a file, a backup or a log. AlertKeeper's data folder keeps only the names of those entries, the callback port, the dates, and for each Schwab account its last digits and Schwab's own name for it -- never the full account number.</li><li>AlertKeeper never trades: it doesn't use Schwab's order functions at all.</li></ul>
+</section>
+
+</main>
+<footer class="site-foot">
+  <p><a href="index.html#statement">Information, not advice — see the full statement</a></p>
+  <p class="muted">AlertKeeper 0.2.12. Every picture here shows made-up data.</p>
+</footer>
+</body>
+</html>

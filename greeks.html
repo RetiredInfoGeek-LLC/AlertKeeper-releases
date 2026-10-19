@@ -1,0 +1,59 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Greeks from Schwab · Help · AlertKeeper</title>
+  <link rel="stylesheet" href="static/tokens.css">
+  <link rel="stylesheet" href="static/app.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar__inner">
+    <a class="brand" href="index.html" aria-label="AlertKeeper: Start here">
+      <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true">
+        <rect class="brand__desk" x="3" y="9" width="24" height="18" rx="4"/>
+        <circle class="brand__dot" cx="25" cy="9" r="5"/>
+      </svg>
+      <span class="brand__name">AlertKeeper</span>
+      <span class="brand__version">0.2.12</span>
+    </a>
+  </div>
+  <nav class="nav" aria-label="Pages">
+    
+    <a class="nav__link" href="index.html">Start here</a>
+    
+    <a class="nav__link" href="help.html">Help</a>
+    
+    <a class="nav__link nav__link--current" href="guides.html" aria-current="page">Guides</a>
+    
+    <a class="nav__link" href="report.html">Send a report</a>
+    
+  </nav>
+</header>
+<main class="page stack page--text">
+
+<nav class="row settings-bar" aria-label="Help sections"><a href="help.html">← All help</a><a href="getting-started.html">Getting started</a><a href="words.html">Words AlertKeeper uses</a><a href="pages.html">The pages</a><a href="guides.html" aria-current="page">Guides</a><a href="review.html">Review</a><a href="troubleshooting.html">Troubleshooting</a><a href="numbers.html">Why my numbers differ from my broker&#39;s or another program&#39;s</a><a href="report.html">Send a report</a><a href="about.html">About</a></nav>
+<h1 class="page-title">Greeks from Schwab</h1>
+
+<section class="card">
+  <div class="card__head"><h2 class="card__title">Where this comes from</h2></div>
+  <div class="help-sources"><h3 class="section-title">Originator and date</h3><p>AlertKeeper&#39;s maker, 10/14/2026: delta and theta beside each open option on Positions, from the broker&#39;s own option
+chain, once the user connects Schwab.</p><h3 class="section-title">Industry sources read</h3><p>Schwab&#39;s Market Data API, its option chains (api.schwabapi.com/marketdata/v1/chains: for an underlying, a side and
+an expiry, each strike&#39;s quote with its delta and theta). Yahoo Finance&#39;s chains have no greeks, which is why this
+waited for the broker connection.</p><h3 class="section-title">What prompted it</h3><p>Trading options from a service&#39;s recs: how much a position moves with the stock, and what each day takes off it,
+beside the position itself.</p><h3 class="section-title">What we changed and why</h3><p>Nothing in Schwab&#39;s numbers: delta and theta as the chain gives them, read once a day with the accounts, one chain
+per underlying, expiry and side. Only the greeks come from Schwab; every price on Positions, the charts and Exit
+Timing still comes from the price source in Settings → Prices (Yahoo Finance). Without the Schwab connection, no
+greeks are shown. Information, not advice.</p><h3 class="section-title">Our own evidence</h3><p>`tests/test_schwab_api.py`: a stood-in chain gives an open option&#39;s delta and theta, which Positions then shows; a
+contract the chain doesn&#39;t list shows none. Not yet run against Schwab itself.</p></div>
+</section>
+
+</main>
+<footer class="site-foot">
+  <p><a href="index.html#statement">Information, not advice — see the full statement</a></p>
+  <p class="muted">AlertKeeper 0.2.12. Every picture here shows made-up data.</p>
+</footer>
+</body>
+</html>
